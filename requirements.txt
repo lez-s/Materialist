@@ -16,7 +16,6 @@ scipy==1.15.2
 torch==2.4.1
 torchmetrics==1.4.0.post0
 torchvision==0.19.1
-tqdm==4.67.1
 tqdm==4.66.4
 wandb==0.19.9
 xformers==0.0.29.post3
