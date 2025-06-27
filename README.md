@@ -91,12 +91,15 @@ Results are saved to the `output_imgs/{save_name}/` directory, including:
 
 # Citation
 ```
-@article{wang2025materialist,
-    title={Materialist: Physically Based Editing Using Single-Image Inverse Rendering},
-    author={Wang, Lezhong and Tran, Duc Minh and Cui, Ruiqi and TG, Thomson and Chandraker, Manmohan and Frisvad, Jeppe Revall},
-    journal={arXiv preprint arXiv:2501.03717},
-    year={2025}
-    }
+@misc{wang2025materialistphysicallybasedediting,
+      title={Materialist: Physically Based Editing Using Single-Image Inverse Rendering}, 
+      author={Lezhong Wang and Duc Minh Tran and Ruiqi Cui and Thomson TG and Anders Bjorholm Dahl and Siavash Arjomand Bigdeli and Jeppe Revall Frisvad and Manmohan Chandraker},
+      year={2025},
+      eprint={2501.03717},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2501.03717}, 
+}
 ```
 
 # Acknowledgements
