@@ -68,18 +68,22 @@ python inverse_img_w_mi.py --model_name=none --opt_src=a --opt_env_from=2 --opt_
 
 ### 3.2 Rendering and Editing
 ```bash
-# Render with default settings
+# Render with default settings using example
 python render_final.py --save_name="indoor" --mode="real"
 
 # Render with transparency
 python trans_edit.py --save_name="indoor" 
+
+# Render with shadow effects using rolling envmap
+python render_final.py --save_name="jinjya" --mode='rolling' --env_path='envmap/41.hdr'
 ```
 
 - `--env_path`: Path to environment map (HDR)
 - `--save_name`: Name of saved results
-- `--mode`: Rendering mode ("real" for rendering without changes or "oi" for object insertion)
+- `--mode`: Rendering mode ("real" for rendering without changes or "oi" for object insertion, "rolling" for rolling environment map)
 - `--input_path`: Custom path for material loading
 - `--save_path`: Custom path for saving rendered images
+
 
 # 4. Output
 

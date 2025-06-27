@@ -711,9 +711,18 @@ def inverse_image(img_inverse_path, save_name, opt_src, opt_order, use_mask, opt
                 use_mask = False
         
         mesh_path = os.path.join(output_dir,f'{save_name}.ply')
+        mesh_mask_path = os.path.join(output_dir,'mesh_mask.png')
+        if os.path.exists(mesh_mask_path):
+            mesh_mask = plt.imread(mesh_mask_path)
+            mesh_mask = np.array(mesh_mask, dtype=np.bool_)
+            if mesh_mask.ndim > 2:  # If it's an RGB image, use only the first channel
+                mesh_mask = mesh_mask[..., 0]
         if not os.path.exists(mesh_path):
             depth = 2 * depth.max() - depth
-            mesh, b_points  = depth_file_to_mesh(depth,cameraMatrix=None, minAngle=2, sun3d=False, depthScale=1.0)
+            if os.path.exists(mesh_mask_path):
+                depth[mesh_mask] = 0
+                print(f"Applied mask from {mesh_mask_path} to depth map")
+            mesh, b_points  = depth_file_to_mesh(depth,cameraMatrix=None, minAngle=6, sun3d=False, depthScale=1.0)
             mesh = rotate_mesh_around_x(mesh, 180)
             o3d.io.write_triangle_mesh(mesh_path, mesh)
 

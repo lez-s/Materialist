@@ -1,0 +1,19 @@
+{
+    "img_path": "real_data/jinjya.png",
+    "save_name": "jinjya",
+    "opt_src": "a",
+    "opt_order": [
+        "rm",
+        "a"
+    ],
+    "use_mask": false,
+    "opt_env_from": 2,
+    "model_name": "none",
+    "image_size": [
+        512,
+        512
+    ],
+    "spp": 64,
+    "output_type": "arm",
+    "use_mesh_normal": true
+}
