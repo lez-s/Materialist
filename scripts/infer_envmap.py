@@ -280,11 +280,16 @@ def main():
     # Load input image
     print(f"[Info] Loading image: {image_path}")
     img_bitmap = mi.Bitmap(image_path)
-    image_np = np.array(img_bitmap, dtype=np.float32)
+    image_np = np.array(img_bitmap)
+    is_srgb_input = Path(image_path).suffix.lower() != ".exr"
+    if is_srgb_input and np.issubdtype(image_np.dtype, np.integer):
+        image_np = image_np.astype(np.float32) / np.iinfo(image_np.dtype).max
+    else:
+        image_np = image_np.astype(np.float32)
     if image_np.ndim == 2:
         image_np = np.stack([image_np] * 3, axis=-1)
     image_np = center_crop_and_resize(image_np, (512, 512), return_tensor=False)
-    if not image_path.endswith(".exr"):
+    if is_srgb_input:
         warnings.warn(
             "Input image is PNG/JPG — assuming sRGB, converting to linear.",
             UserWarning,
